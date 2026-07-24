@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="77px" height="77px" viewBox="0 0 77 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arrow</title>
+    <defs>
+        <polygon id="path-1" points="0 0 29.6508 0 29.6508 19.43375 0 19.43375"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sprite" transform="translate(-34, -172)">
+            <g id="Arrow" transform="translate(34, 172)">
+                <circle id="Oval" fill-opacity="0.8" fill="#FFFFFF" cx="38.5" cy="38.5" r="38.5"></circle>
+                <g id="Group-3" transform="translate(24, 29)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M28.451,8.51675 L4.097,8.51675 L10.565,2.04875 C11.034,1.57975 11.034,0.82075 10.565,0.35175 C10.097,-0.11725 9.337,-0.11725 8.868,0.35175 L0.351,8.86875 C-0.117,9.33675 -0.117,10.09675 0.351,10.56575 L8.868,19.08175 C9.102,19.31675 9.409,19.43375 9.717,19.43375 C10.024,19.43375 10.331,19.31675 10.565,19.08175 C11.034,18.61375 11.034,17.85375 10.565,17.38475 L4.097,10.91675 L28.451,10.91675 C29.114,10.91675 29.651,10.37975 29.651,9.71675 C29.651,9.05375 29.114,8.51675 28.451,8.51675" id="Fill-1" fill="#3674A8" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

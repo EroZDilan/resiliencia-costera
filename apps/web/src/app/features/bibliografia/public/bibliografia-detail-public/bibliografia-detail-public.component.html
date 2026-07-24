@@ -1,0 +1,27 @@
+<app-back-button text="Bibliografía" />
+
+@if (item; as entity) {
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="titulo-elemento-show">{{ entity.titulo }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <p class="date">{{ entity.isbn }}</p>
+      <p class="date">{{ entity.autores }}</p>
+      @if (entity.web) {
+        <p class="date">
+          <a [href]="entity.web" target="_blank"><img src="images/icon/svg/world.png" style="width: 30px" /> {{ entity.web }}</a>
+        </p>
+        <br />
+      }
+      <p class="contenido-elemento">{{ entity.resumen }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-centrado contenido-vertical-centrado full-height">
+      @if (entity.adjunto) {
+        <a [href]="adjuntos.url(entity.adjunto)" target="_blank"><i class="fas fa-download" title="Descargar"></i></a>
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,32 @@
+<app-back-button text="Iniciativas" />
+
+<div class="title">Iniciativas</div>
+
+@if (items.length === 0) {
+  <div class="alert alert-front">
+    <strong><i class="fas fa-info-circle bigger-150"></i> No hay iniciativas</strong>
+  </div>
+}
+@for (entity of items; track entity.id) {
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      @if (entity.logo) {
+        <img width="100%" [src]="adjuntos.url(entity.logo)" />
+      }
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <p class="titulo-elemento">{{ entity.nombre }}</p>
+      <p class="contenido-elemento">{{ entity.descripcion }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-1">
+      <div class="texto-centrado full-height contenido-vertical-centrado">
+        <a class="action_edit" [routerLink]="['/iniciativas', entity.slug]">
+          <span class="ver_mas empty uppercase" style="display: block"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12"><hr /></div>
+  </div>
+}

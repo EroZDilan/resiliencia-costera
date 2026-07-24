@@ -1,0 +1,50 @@
+<app-back-button text="Iniciativas" />
+
+@if (item; as entity) {
+  <div class="row">
+    <div class="col-md-8">
+      <p class="titulo-elemento-show">{{ entity.nombre }}</p>
+      <p class="paragraph">{{ entity.descripcion }}</p>
+      <p class="home_subtitle">Área de intervencion</p>
+      <p class="paragraph">{{ entity.areaIntervencion }}</p>
+    </div>
+    <div class="col-md-4">
+      @if (entity.logo) {
+        <img class="logo-elemento" [src]="adjuntos.url(entity.logo)" />
+      }
+    </div>
+  </div>
+
+  @if (entity.organizacionesLideres.length > 0) {
+    <div class="row">
+      <div class="page_element_subtitle">Organizaciones líderes</div>
+      <div class="large-12 columns">
+        <app-logo-carousel [organizaciones]="entity.organizacionesLideres" />
+      </div>
+    </div>
+  }
+  @if (entity.otrosLideres) {
+    <div class="row">
+      <div class="col-xs-12">
+        <br />
+        <p class="contenido-elemento texto-centrado">{{ entity.otrosLideres }}</p>
+      </div>
+    </div>
+  }
+
+  @if (entity.organizacionesParticipantes.length > 0) {
+    <div class="row">
+      <div class="page_element_subtitle">Organizaciones participantes</div>
+      <div class="large-12 columns">
+        <app-logo-carousel [organizaciones]="entity.organizacionesParticipantes" />
+      </div>
+    </div>
+  }
+  @if (entity.otrosParticipantes) {
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="contenido-elemento texto-centrado">{{ entity.otrosParticipantes }}</p>
+      </div>
+    </div>
+  }
+}

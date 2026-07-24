@@ -1,0 +1,57 @@
+<app-back-button text="Eventos" />
+
+<div class="title">Eventos</div>
+
+@if (items.length === 0) {
+  <div class="alert alert-front">
+    <strong><i class="fas fa-info-circle bigger-150"></i> No hay eventos</strong>
+  </div>
+}
+@if (items.length > 0) {
+  <div class="row">
+    @if (items[0].imagen) {
+      <div class="col-xs-12 noticia_imagen texto-centrado">
+        <a class="action_edit" [routerLink]="['/eventos', items[0].slug]">
+          <img width="100%" [src]="adjuntos.url(items[0].imagen)" />
+        </a>
+      </div>
+    }
+    <div class="col-xs-12">
+      <p class="noticia_fecha texto-centrado">
+        De {{ items[0].fechaInicio | dateToStr }} al {{ items[0].fechaFin | dateToStr }}
+      </p>
+      <a class="action_edit" [routerLink]="['/eventos', items[0].slug]">
+        <p class="noticia_titulo texto-centrado">{{ items[0].titulo }}</p>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+      <p class="noticia_resumen texto-centrado">{{ items[0].descripcion }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-derecha">
+      <span class="ver_mas uppercase">
+        <a class="action_edit" [routerLink]="['/eventos', items[0].slug]">Ver más</a>
+      </span>
+    </div>
+  </div>
+  <br />
+  @if (items.length > 1) {
+    <div class="row">
+      @for (entity of items.slice(1); track entity.id) {
+        <div class="col-xs-12 col-sm-6">
+          @if (entity.imagen) {
+            <div class="noticia_imagen">
+              <a class="action_edit" [routerLink]="['/eventos', entity.slug]">
+                <img width="100%" [src]="adjuntos.url(entity.imagen)" />
+              </a>
+            </div>
+          }
+          <p class="noticia_fecha texto-centrado">De {{ entity.fechaInicio | dateToStr }} al {{ entity.fechaFin | dateToStr }}</p>
+          <a class="action_edit" [routerLink]="['/eventos', entity.slug]">
+            <p class="noticia_titulo texto-centrado">{{ entity.titulo }}</p>
+          </a>
+          <p class="noticia_resumen texto-centrado">{{ entity.descripcion }}</p>
+        </div>
+      }
+    </div>
+  }
+}

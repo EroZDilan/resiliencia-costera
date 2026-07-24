@@ -1,0 +1,37 @@
+<app-back-button text="Colaboraciones" />
+
+@if (items.length === 0) {
+  <div class="alert alert-front">
+    <strong><i class="fas fa-info-circle bigger-150"></i> No hay colaboraciones</strong>
+  </div>
+} @else {
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="date">{{ items[0].fechaInicioPublicacion | dateToStr }}</p>
+      <p class="noticia_titulo">{{ items[0].titulo }}</p>
+      <p class="colaboracion_autores">{{ items[0].autores }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <p class="line-clamp noticia_resumen">{{ items[0].textoCompleto }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-derecha contenido-vertical-centrado full-height">
+      <span class="ver_mas uppercase">
+        <a class="action_edit" [routerLink]="['/colaboraciones', items[0].slug]">Leer más</a>
+      </span>
+    </div>
+  </div>
+  <br />
+  @if (items.length > 1) {
+    <div class="row">
+      @for (entity of items.slice(1); track entity.id) {
+        <div class="col-xs-12 col-sm-6">
+          <div class="date">{{ entity.fechaInicioPublicacion | dateToStr }}</div>
+          <div class="titulo-elemento"><a class="action_edit" [routerLink]="['/colaboraciones', entity.slug]">{{ entity.titulo }}</a></div>
+          <div class="contenido-elemento">{{ entity.autores }}</div>
+        </div>
+      }
+    </div>
+  }
+}

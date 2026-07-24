@@ -1,0 +1,26 @@
+<app-back-button text="Marco legal" />
+
+@if (item; as entity) {
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="titulo-elemento-show">{{ entity.titulo }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <p class="date">{{ entity.numero }} / {{ entity.anno }}</p>
+      <p class="date">{{ entity.tipo }} {{ entity.emisor }}</p>
+      @if (entity.web) {
+        <p class="date">
+          <a [href]="entity.web" target="_blank"><img src="images/icon/svg/world.png" style="width: 30px" /> {{ entity.web }}</a>
+        </p>
+        <br />
+      }
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-centrado contenido-vertical-centrado full-height">
+      @if (entity.adjunto) {
+        <a [href]="adjuntos.url(entity.adjunto)" target="_blank"><i class="fas fa-download" title="Descargar"></i></a>
+      }
+    </div>
+  </div>
+}

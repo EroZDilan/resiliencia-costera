@@ -1,0 +1,245 @@
+@if (configuracion; as c) {
+  <div class="home_title uppercase">{{ c.nombre }}</div>
+
+  <div class="paragraph">{{ c.concepto }}</div>
+  <div class="home_subtitle uppercase">Objetivo</div>
+  <div class="last_paragraph">{{ c.objetivo }}</div>
+  <div class="texto-derecha">
+    <span class="ver_mas uppercase"><a routerLink="/glosario">Glosario</a></span>
+  </div>
+
+  <div id="proyectos" class="home-seccion">
+    <div class="title">
+      Proyectos
+      <span class="texto-derecha blue-text">
+        <a routerLink="/proyectos" [queryParams]="{ estado: 'EN_CURSO' }">En curso</a> |
+        <a routerLink="/proyectos" [queryParams]="{ estado: 'TERMINADO' }">Terminados</a>
+      </span>
+    </div>
+    <div class="contenido-elemento" style="margin-left: 0">{{ c.textoProyectos }}</div>
+    <div class="texto-derecha">
+      <span class="ver_mas uppercase"><a routerLink="/proyectos">Ver más</a></span>
+    </div>
+  </div>
+
+  <div style="clear: both"></div>
+
+  <table style="position: relative; left: -190px">
+    <tr>
+      <td id="collector"></td>
+      <td>
+        <div id="iniciativas" class="home-seccion">
+          <div class="title">Iniciativas</div>
+          <div class="contenido-elemento" style="margin-left: 0">{{ c.textoIniciativas }}</div>
+          <div class="texto-derecha">
+            <span class="ver_mas uppercase"><a routerLink="/iniciativas">Ver más</a></span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div id="organizaciones" class="home-seccion">
+    <div class="title texto-centrado">Organizaciones</div>
+    <div class="row">
+      <div class="large-12 columns">
+        <app-logo-carousel [organizaciones]="organizaciones" />
+      </div>
+    </div>
+    <div class="texto-centrado">
+      <span class="ver_mas uppercase"><a routerLink="/organizaciones">Ver más</a></span>
+    </div>
+  </div>
+
+  @if (editorialReciente && colaboracionReciente) {
+    <div class="row wide-home-seccion">
+      <div class="col-xs-12 col-sm-6">
+        <div class="subtitle texto-centrado">Editoriales</div>
+        <div class="col-seccion">
+          @if (editorialReciente.imagen; as imagen) {
+            <div>
+              <a class="action_edit" [routerLink]="['/editoriales', editorialReciente.slug]">
+                <img width="100%" [src]="adjuntos.url(imagen)" />
+              </a>
+            </div>
+          }
+          <div class="date">{{ editorialReciente.fechaInicioPublicacion | dateToStr }}</div>
+          <div class="titulo-elemento">{{ editorialReciente.titulo }}</div>
+          <div class="contenido-elemento">{{ editorialReciente.autores }}</div>
+        </div>
+        <div class="texto-centrado">
+          <span class="ver_mas uppercase"><a routerLink="/editoriales">Leer anteriores</a></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="subtitle texto-centrado">Colaboraciones</div>
+        <div class="col-seccion">
+          @if (colaboracionReciente.imagen; as imagen) {
+            <div>
+              <a class="action_edit" [routerLink]="['/colaboraciones', colaboracionReciente.slug]">
+                <img width="100%" [src]="adjuntos.url(imagen)" />
+              </a>
+            </div>
+          }
+          <div class="date">{{ colaboracionReciente.fechaInicioPublicacion | dateToStr }}</div>
+          <div class="titulo-elemento">{{ colaboracionReciente.titulo }}</div>
+          <div class="contenido-elemento">{{ colaboracionReciente.autores }}</div>
+        </div>
+        <div class="texto-centrado">
+          <span class="ver_mas uppercase"><a routerLink="/colaboraciones">Leer anteriores</a></span>
+        </div>
+      </div>
+    </div>
+  } @else {
+    @if (editorialReciente; as ed) {
+      <div class="subtitle">Editoriales</div>
+      <div class="home-seccion">
+        @if (ed.imagen; as imagen) {
+          <div>
+            <a class="action_edit" [routerLink]="['/editoriales', ed.slug]">
+              <img width="100%" [src]="adjuntos.url(imagen)" />
+            </a>
+          </div>
+        }
+        <div class="date">{{ ed.fechaInicioPublicacion | dateToStr }}</div>
+        <div class="titulo-elemento">{{ ed.titulo }}</div>
+        <div class="contenido-elemento">{{ ed.autores }}</div>
+      </div>
+      <div class="texto-derecha">
+        <span class="ver_mas uppercase"><a routerLink="/editoriales">Leer anteriores</a></span>
+      </div>
+    }
+    @if (colaboracionReciente; as col) {
+      <div class="subtitle">Colaboraciones</div>
+      <div class="home-seccion">
+        @if (col.imagen; as imagen) {
+          <div>
+            <a class="action_edit" [routerLink]="['/colaboraciones', col.slug]">
+              <img width="100%" [src]="adjuntos.url(imagen)" />
+            </a>
+          </div>
+        }
+        <div class="date">{{ col.fechaInicioPublicacion | dateToStr }}</div>
+        <div class="titulo-elemento">{{ col.titulo }}</div>
+        <div class="contenido-elemento">{{ col.autores }}</div>
+      </div>
+      <div class="texto-derecha">
+        <span class="ver_mas uppercase"><a routerLink="/colaboraciones">Leer anteriores</a></span>
+      </div>
+    }
+  }
+
+  @if (noticias.length > 0 && eventos.length > 0) {
+    <div class="row wide-home-seccion">
+      <div class="col-xs-12 col-sm-6">
+        <div class="subtitle texto-centrado">Noticias</div>
+        @for (noticia of noticias; track noticia.id) {
+          <div class="col-seccion">
+            <div class="date">{{ noticia.fecha | dateToStr }}</div>
+            <div class="titulo-elemento">
+              <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">{{ noticia.titulo }}</a>
+            </div>
+            @if (noticia.imagen) {
+              <div>
+                <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">
+                  <img width="100%" [src]="adjuntos.url(noticia.imagen)" />
+                </a>
+              </div>
+            } @else if (noticia.imagenUrl) {
+              <div>
+                <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">
+                  <img width="100%" [src]="noticia.imagenUrl" />
+                </a>
+              </div>
+            }
+            <div class="contenido-elemento">{{ noticia.resumen }}</div>
+          </div>
+          <hr />
+        }
+        <div class="texto-centrado">
+          <span class="ver_mas uppercase"><a routerLink="/noticias">Leer anteriores</a></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="subtitle texto-centrado">Eventos</div>
+        @for (evento of eventos; track evento.id) {
+          <div class="col-seccion">
+            <div class="date">Del {{ evento.fechaInicio | dateToStr }} al {{ evento.fechaFin | dateToStr }}</div>
+            <div class="titulo-elemento">
+              <a class="action_edit" [routerLink]="['/eventos', evento.slug]">{{ evento.titulo }}</a>
+            </div>
+            @if (evento.imagen) {
+              <div>
+                <a class="action_edit" [routerLink]="['/eventos', evento.slug]">
+                  <img width="100%" [src]="adjuntos.url(evento.imagen)" />
+                </a>
+              </div>
+            }
+            <div class="contenido-elemento">{{ evento.descripcion }}</div>
+          </div>
+          <hr />
+        }
+        <div class="texto-centrado">
+          <span class="ver_mas uppercase"><a routerLink="/eventos">Ver anteriores</a></span>
+        </div>
+      </div>
+    </div>
+  } @else {
+    @if (noticias.length > 0) {
+      <div class="row home-seccion">
+        <div class="col-xs-12">
+          <div class="subtitle">Noticias</div>
+        </div>
+        @for (noticia of noticias; track noticia.id) {
+          <div [class]="noticias.length > 1 ? 'col-xs-12 col-sm-6 col-seccion' : 'col-xs-12 row-seccion'">
+            <div class="date">{{ noticia.fecha | dateToStr }}</div>
+            <div class="titulo-elemento">
+              <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">{{ noticia.titulo }}</a>
+            </div>
+            @if (noticia.imagen) {
+              <div>
+                <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">
+                  <img width="100%" [src]="adjuntos.url(noticia.imagen)" />
+                </a>
+              </div>
+            } @else if (noticia.imagenUrl) {
+              <div>
+                <a class="action_edit" [routerLink]="['/noticias', noticia.slug]">
+                  <img width="100%" [src]="noticia.imagenUrl" />
+                </a>
+              </div>
+            }
+            <div class="contenido-elemento">{{ noticia.resumen }}</div>
+          </div>
+        }
+        <div class="texto-centrado">
+          <span class="ver_mas uppercase"><a routerLink="/noticias">Leer anteriores</a></span>
+        </div>
+      </div>
+    }
+    @if (eventos.length > 0) {
+      <div class="row home-seccion">
+        <div class="subtitle">Eventos</div>
+      </div>
+      @for (evento of eventos; track evento.id) {
+        <div [class]="eventos.length > 1 ? 'col-xs-12 col-sm-6 col-seccion' : 'col-xs-12 row-seccion'">
+          <div class="date">Del {{ evento.fechaInicio | dateToStr }} al {{ evento.fechaFin | dateToStr }}</div>
+          <div class="titulo-elemento">
+            <a class="action_edit" [routerLink]="['/eventos', evento.slug]">{{ evento.titulo }}</a>
+          </div>
+          @if (evento.imagen) {
+            <div>
+              <a class="action_edit" [routerLink]="['/eventos', evento.slug]">
+                <img width="100%" [src]="adjuntos.url(evento.imagen)" />
+              </a>
+            </div>
+          }
+          <div class="contenido-elemento">{{ evento.descripcion }}</div>
+        </div>
+      }
+      <div class="texto-centrado">
+        <span class="ver_mas uppercase"><a routerLink="/eventos">Ver anteriores</a></span>
+      </div>
+    }
+  }
+}

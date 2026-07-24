@@ -1,0 +1,92 @@
+<app-back-button text="Proyectos" />
+
+@if (proyecto; as entity) {
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="titulo-elemento-show">{{ entity.nombreCorto }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <p class="paragraph">{{ entity.nombreOficial }}</p>
+      <p class="home_subtitle">Área de intervencion</p>
+      <p class="paragraph">{{ entity.areaIntervencion }}</p>
+    </div>
+    <div class="col-md-3">
+      <img class="logo-elemento" [src]="adjuntos.url(entity.logo)" style="width: 100%" />
+    </div>
+  </div>
+
+  @if (markers.length) {
+    <div class="row">
+      <app-leaflet-map [markers]="markers" />
+    </div>
+  }
+
+  @if (entity.organizacionesLideres.length > 0 || entity.otrosLideres) {
+    <div class="row" style="margin-top: 50px">
+      <div class="page_element_subtitle">Organizaciones líderes</div>
+    </div>
+  }
+  @if (entity.organizacionesLideres.length > 0) {
+    <div class="row">
+      <div class="large-12 columns">
+        <app-logo-carousel [organizaciones]="entity.organizacionesLideres" />
+      </div>
+    </div>
+  }
+  @if (entity.otrosLideres) {
+    <div class="row">
+      <div class="col-xs-12">
+        <br />
+        <p class="contenido-elemento texto-centrado">{{ entity.otrosLideres }}</p>
+      </div>
+    </div>
+  }
+
+  @if (entity.organizacionesParticipantes.length > 0 || entity.otrosParticipantes) {
+    <div class="row" style="margin-top: 50px">
+      <div class="page_element_subtitle">Organizaciones participantes</div>
+    </div>
+  }
+  @if (entity.organizacionesParticipantes.length > 0) {
+    <div class="row">
+      <div class="large-12 columns">
+        <app-logo-carousel [organizaciones]="entity.organizacionesParticipantes" />
+      </div>
+    </div>
+  }
+  @if (entity.otrosParticipantes) {
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="contenido-elemento texto-centrado">{{ entity.otrosParticipantes }}</p>
+      </div>
+    </div>
+  }
+
+  @if (entity.resultado) {
+    <div class="row" style="margin-top: 50px">
+      <div class="col-xs-12">
+        <p class="home_subtitle">Resultados</p>
+        <p class="paragraph">{{ entity.resultado }}</p>
+      </div>
+    </div>
+  }
+
+  @if (entity.productos.length > 0) {
+    <div class="row" style="margin-top: 50px">
+      <div class="col-xs-12">
+        <p class="home_subtitle">Productos</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        @for (producto of entity.productos; track producto.id) {
+          <p class="next_paragraph">
+            <a [href]="adjuntos.url(producto)" target="_blank"><i class="fas fa-download"></i></a> {{ producto.archivo }}
+          </p>
+        }
+      </div>
+    </div>
+  }
+}

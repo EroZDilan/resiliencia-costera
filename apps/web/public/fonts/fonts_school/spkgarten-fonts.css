@@ -1,0 +1,219 @@
+@font-face {
+    font-family: 'spkgarten';
+    src:    url('../fonts_school/spkgarten-fonts.eot?qxees9');
+    src:    url('../fonts_school/spkgarten-fonts.eot?qxees9#iefix') format('embedded-opentype'),
+    url('../fonts_school/spkgarten-fonts.ttf?qxees9') format('truetype'),
+    url('../fonts_school/spkgarten-fonts.woff?qxees9') format('woff'),
+    url('../fonts_school/spkgarten-fonts.svg?qxees9#spkgarten-fonts') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="spkgarten-icon-"], [class*=" spkgarten-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'spkgarten' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.spkgarten-icon-splash:before {
+    content: "\e900";
+}
+.spkgarten-icon-hover:before {
+    content: "\e913";
+}
+.spkgarten-icon-call:before {
+    content: "\e901";
+}
+.spkgarten-icon-class:before {
+    content: "\e902";
+}
+.spkgarten-icon-clock:before {
+    content: "\e903";
+}
+.spkgarten-icon-color:before {
+    content: "\e904";
+}
+.spkgarten-icon-food:before {
+    content: "\e905";
+}
+.spkgarten-icon-link:before {
+    content: "\e906";
+}
+.spkgarten-icon-map:before {
+    content: "\e907";
+}
+.spkgarten-icon-music-class:before {
+    content: "\e908";
+}
+.spkgarten-icon-parents:before {
+    content: "\e909";
+}
+.spkgarten-icon-play:before {
+    content: "\e90a";
+}
+.spkgarten-icon-prev:before {
+    content: "\e90b";
+}
+.spkgarten-icon-next:before {
+    content: "\e93d";
+}
+.spkgarten-icon-up:before {
+    content: "\e93e";
+}
+.spkgarten-icon-down:before {
+    content: "\e90c";
+}
+.spkgarten-icon-reader:before {
+    content: "\e90d";
+}
+.spkgarten-icon-teacher:before {
+    content: "\e90e";
+}
+.spkgarten-icon-testimonial:before {
+    content: "\e90f";
+}
+.spkgarten-icon-translator:before {
+    content: "\e910";
+}
+.spkgarten-icon-trophy:before {
+    content: "\e911";
+}
+.spkgarten-icon-user:before {
+    content: "\e912";
+}
+.spkgarten-icon-globe:before {
+    content: "\e93f";
+}
+.spkgarten-icon-px:before {
+    content: "\e914";
+}
+.spkgarten-icon-behance-square:before {
+    content: "\e915";
+}
+.spkgarten-icon-behance:before {
+    content: "\e916";
+}
+.spkgarten-icon-delicious:before {
+    content: "\e917";
+}
+.spkgarten-icon-deviantart:before {
+    content: "\e918";
+}
+.spkgarten-icon-dribbble:before {
+    content: "\e919";
+}
+.spkgarten-icon-facebook-f:before {
+    content: "\e91a";
+}
+.spkgarten-icon-facebook-official:before {
+    content: "\e91b";
+}
+.spkgarten-icon-facebook-square:before {
+    content: "\e91c";
+}
+.spkgarten-icon-facebook:before {
+    content: "\e91d";
+}
+.spkgarten-icon-feed:before {
+    content: "\e91e";
+}
+.spkgarten-icon-flickr:before {
+    content: "\e91f";
+}
+.spkgarten-icon-foursquare:before {
+    content: "\e920";
+}
+.spkgarten-icon-google-plus-square:before {
+    content: "\e921";
+}
+.spkgarten-icon-google-plus:before {
+    content: "\e922";
+}
+.spkgarten-icon-instagram:before {
+    content: "\e923";
+}
+.spkgarten-icon-linkedin-square:before {
+    content: "\e924";
+}
+.spkgarten-icon-linkedin:before {
+    content: "\e925";
+}
+.spkgarten-icon-medium:before {
+    content: "\e926";
+}
+.spkgarten-icon-pinterest-p:before {
+    content: "\e927";
+}
+.spkgarten-icon-pinterest-square:before {
+    content: "\e928";
+}
+.spkgarten-icon-pinterest:before {
+    content: "\e929";
+}
+.spkgarten-icon-rss-square:before {
+    content: "\e92a";
+}
+.spkgarten-icon-rss:before {
+    content: "\e92b";
+}
+.spkgarten-icon-skype:before {
+    content: "\e92c";
+}
+.spkgarten-icon-slack:before {
+    content: "\e92d";
+}
+.spkgarten-icon-soundcloud:before {
+    content: "\e92e";
+}
+.spkgarten-icon-spotify:before {
+    content: "\e92f";
+}
+.spkgarten-icon-trello:before {
+    content: "\e930";
+}
+.spkgarten-icon-twitch:before {
+    content: "\e931";
+}
+.spkgarten-icon-twitter-square:before {
+    content: "\e932";
+}
+.spkgarten-icon-twitter:before {
+    content: "\e933";
+}
+.spkgarten-icon-vimeo-square:before {
+    content: "\e934";
+}
+.spkgarten-icon-vimeo:before {
+    content: "\e935";
+}
+.spkgarten-icon-vine:before {
+    content: "\e936";
+}
+.spkgarten-icon-whatsapp:before {
+    content: "\e937";
+}
+.spkgarten-icon-yahoo:before {
+    content: "\e938";
+}
+.spkgarten-icon-yelp:before {
+    content: "\e939";
+}
+.spkgarten-icon-youtube-play:before {
+    content: "\e93a";
+}
+.spkgarten-icon-youtube-square:before {
+    content: "\e93b";
+}
+.spkgarten-icon-youtube:before {
+    content: "\e93c";
+}
+

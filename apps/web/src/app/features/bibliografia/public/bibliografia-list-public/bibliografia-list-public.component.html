@@ -1,0 +1,29 @@
+<app-back-button text="Bibliografía" />
+
+@if (items.length === 0) {
+  <div class="alert alert-front">
+    <strong><i class="fas fa-info-circle bigger-150"></i> No hay bibliografía</strong>
+  </div>
+}
+@for (entity of items; track entity.id) {
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <p class="date">{{ entity.isbn }}</p>
+      <p class="noticia_titulo"><a [routerLink]="['/bibliografia', entity.slug]">{{ entity.titulo }}</a></p>
+      <p class="line-clamp noticia_resumen">{{ entity.resumen }}</p>
+      <p class="date">{{ entity.autores }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-centrado contenido-vertical-centrado full-height">
+      @if (entity.adjunto) {
+        <a [href]="adjuntos.url(entity.adjunto)" target="_blank"><i class="fas fa-download" title="Descargar"></i></a>
+      }
+    </div>
+    <div class="col-xs-12 col-sm-2 texto-derecha contenido-vertical-centrado full-height">
+      <span class="ver_mas uppercase">
+        <a class="action_edit" [routerLink]="['/bibliografia', entity.slug]">Leer más</a>
+      </span>
+    </div>
+  </div>
+  <br />
+  <hr />
+}

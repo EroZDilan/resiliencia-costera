@@ -1,0 +1,33 @@
+<p-toast />
+<p-confirmDialog />
+
+<div class="header">
+  <h2>Organizaciones</h2>
+  <button pButton label="Nueva organización" icon="pi pi-plus" routerLink="/admin/organizaciones/nueva"></button>
+</div>
+
+<p-table [value]="organizaciones" [loading]="loading" dataKey="id">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Logo</th>
+      <th>Nombre</th>
+      <th>En la web</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-org>
+    <tr>
+      <td>
+        @if (adjuntos.url(org.logo); as logoUrl) {
+          <img [src]="logoUrl" alt="" width="48" />
+        }
+      </td>
+      <td>{{ org.nombre }}</td>
+      <td>{{ org.web || org.facebook || '' }}</td>
+      <td class="actions">
+        <button pButton icon="pi pi-pencil" class="p-button-text" [routerLink]="['/admin/organizaciones', org.id]"></button>
+        <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="confirmRemove(org)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

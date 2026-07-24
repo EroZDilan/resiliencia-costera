@@ -1,0 +1,43 @@
+<p-toast />
+<p-confirmDialog />
+
+<div class="header">
+  <h2>Proyectos</h2>
+  <div class="header-actions">
+    <button pButton label="Exportar a Excel" icon="pi pi-file-excel" class="p-button-outlined" (click)="exportExcel()"></button>
+    <button pButton label="Nuevo proyecto" icon="pi pi-plus" routerLink="/admin/proyectos/nuevo"></button>
+  </div>
+</div>
+
+<p-table [value]="proyectos" [loading]="loading" dataKey="id">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Logo</th>
+      <th>Nombre corto</th>
+      <th>Estado</th>
+      <th>Contacto</th>
+      <th>Lugares</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-proyecto>
+    <tr>
+      <td>
+        @if (adjuntos.url(proyecto.logo); as logoUrl) {
+          <img [src]="logoUrl" alt="" width="48" />
+        }
+      </td>
+      <td>{{ proyecto.nombreCorto }}</td>
+      <td>
+        <p-tag [severity]="proyecto.estado === 'EN_CURSO' ? 'success' : 'secondary'"
+               [value]="proyecto.estado === 'EN_CURSO' ? 'En curso' : 'Terminado'"></p-tag>
+      </td>
+      <td>{{ proyecto.email || proyecto.telefono || '' }}</td>
+      <td>{{ proyecto.lugares.length }}</td>
+      <td class="actions">
+        <button pButton icon="pi pi-pencil" class="p-button-text" [routerLink]="['/admin/proyectos', proyecto.id]"></button>
+        <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="confirmRemove(proyecto)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

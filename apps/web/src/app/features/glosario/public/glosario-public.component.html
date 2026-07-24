@@ -1,0 +1,43 @@
+<app-back-button text="Glosario" />
+
+<table width="100%">
+  <tr>
+    <td>
+      <div class="title">Glosario</div>
+    </td>
+  </tr>
+</table>
+
+<div id="iniciativas_list">
+  <div class="row">
+    <div class="col-xs-11">
+      @for (letra of letters; track letra) {
+        <div class="row">
+          <div class="col-xs-1 glosario-letra">
+            <a [id]="'letra_' + letra"></a>
+            {{ letra }}
+          </div>
+          <div class="col-xs-10">
+            @for (termino of grouped[letra]; track termino.id; let last = $last) {
+              <div class="glosario-terrmino">{{ letra }} - {{ termino.termino }}</div>
+              <div class="glosario-significado">{{ termino.significado }}</div>
+              @if (!last) {
+                <hr />
+              }
+            }
+          </div>
+          <div class="col-xs-11">
+            <hr />
+          </div>
+        </div>
+      }
+    </div>
+    <div class="col-xs-1">
+      <div id="letraIndex" #letraIndex style="position: absolute">
+        @for (letra of letters; track letra) {
+          <div class="letra glosario-letra-clickable" (click)="scrollTo(letra)">{{ letra }}</div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

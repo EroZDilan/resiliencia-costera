@@ -1,0 +1,55 @@
+<app-back-button text="Proyectos" />
+
+<table width="100%">
+  <tr>
+    <td>
+      <div class="title">Proyectos</div>
+    </td>
+    <td>
+      <div class="toggle-container">
+        <span style="white-space: nowrap">
+          <span class="toggle-switch" [class.toggle-on]="estado === 'EN_CURSO'" [class.toggle-off]="estado !== 'EN_CURSO'" (click)="setEstado('EN_CURSO')">En curso</span>
+          <span class="toggle-switch" [class.toggle-on]="estado === 'TERMINADO'" [class.toggle-off]="estado !== 'TERMINADO'" (click)="setEstado('TERMINADO')">Terminados</span>
+        </span>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div id="proyect_list">
+  @if (proyectos.length === 0) {
+    <div class="alert alert-front">
+      <strong>
+        <i class="fas fa-info-circle bigger-150"></i>
+        No hay proyectos {{ estado === 'TERMINADO' ? 'terminados' : 'en curso' }}
+      </strong>
+    </div>
+  }
+  @for (entity of proyectos; track entity.id) {
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        <a class="action_edit" [routerLink]="['/proyectos', entity.slug]">
+          <img width="100%" [src]="adjuntos.url(entity.logo)" />
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <a class="action_edit" [routerLink]="['/proyectos', entity.slug]">
+          <p class="titulo-elemento">{{ entity.nombreCorto }}</p>
+        </a>
+        <p class="contenido-elemento">{{ entity.nombreOficial }}</p>
+      </div>
+      <div class="col-xs-12 col-sm-1">
+        <div class="texto-centrado full-height contenido-vertical-centrado">
+          <a class="action_edit" [routerLink]="['/proyectos', entity.slug]">
+            <span class="ver_mas empty uppercase" style="display: block"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <hr />
+      </div>
+    </div>
+  }
+</div>

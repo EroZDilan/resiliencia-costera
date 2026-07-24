@@ -1,0 +1,65 @@
+<app-back-button text="Organizaciones" />
+
+@if (item; as entity) {
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="titulo-elemento-show">{{ entity.nombre }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <p class="paragraph">{{ entity.descripcion }}</p>
+    </div>
+    <div class="col-md-3">
+      <img class="logo-elemento" [src]="adjuntos.url(entity.logo)" style="width: 100%" />
+    </div>
+  </div>
+
+  <div style="padding-left: 25px; padding-right: 25px; margin-top: 30px">
+    <table style="width: 100%">
+      <tr>
+        <td style="width: 33%; text-align: center">
+          @if (entity.web) {
+            <a [href]="entity.web" target="_blank"><img src="images/icon/svg/world.png" style="width: 30px" /></a>
+          } @else {
+            <img src="images/icon/svg/world.png" style="width: 30px" />
+          }
+        </td>
+        <td style="width: 33%; text-align: center">
+          @if (entity.email) {
+            <a [href]="'mailto:' + entity.email"><img src="images/icon/svg/envelope.png" style="width: 30px" /></a>
+          } @else {
+            <img src="images/icon/svg/envelope.png" style="width: 30px" />
+          }
+        </td>
+        <td style="width: 33%; text-align: center"><img src="images/icon/svg/phone.png" style="width: 30px" /></td>
+      </tr>
+    </table>
+    <hr />
+    <table style="width: 100%">
+      <tr>
+        <td style="width: 33%; text-align: center">
+          @if (entity.facebook) {
+            <a [href]="entity.facebook" target="_blank"><img src="images/icon/svg/facebook.svg" style="width: 30px" /></a>
+          } @else {
+            <img src="images/icon/svg/facebook.svg" style="width: 30px" />
+          }
+        </td>
+        <td style="width: 33%; text-align: center">
+          @if (entity.twitter) {
+            <a [href]="entity.twitter" target="_blank"><img src="images/icon/svg/twitter.svg" style="width: 30px" /></a>
+          } @else {
+            <img src="images/icon/svg/twitter.svg" style="width: 30px" />
+          }
+        </td>
+        <td style="width: 33%; text-align: center">
+          @if (entity.instagram) {
+            <a [href]="entity.instagram" target="_blank"><img src="images/icon/svg/instagram.svg" style="width: 30px" /></a>
+          } @else {
+            <img src="images/icon/svg/instagram.svg" style="width: 30px" />
+          }
+        </td>
+      </tr>
+    </table>
+  </div>
+}

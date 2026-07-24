@@ -1,0 +1,67 @@
+  <div class="main-container" id="main-container">
+    <div id="top_bar">
+      <a routerLink="/">
+        <div id="logo_top"></div>
+      </a>
+      <div id="input_search" [class.hide]="!searchOpen">
+        <form id="searchForm" (ngSubmit)="submitSearch()">
+          <input type="text" name="search" [(ngModel)]="searchTerm" [ngModelOptions]="{ standalone: true }" />
+        </form>
+      </div>
+      <div id="menu_search">
+        <i id="lupa" class="fa fa-search text-primary" (click)="toggleSearch()"></i>
+      </div>
+      <div id="menu_items" class="text-primary menu_elements" [class.hide]="!menuOpen">
+        <p class="menu_item"><a routerLink="/" (click)="closeMenu()">Inicio</a></p>
+        <p class="menu_item"><a routerLink="/proyectos" (click)="closeMenu()">Proyectos</a></p>
+        <p class="menu_item"><a routerLink="/iniciativas" (click)="closeMenu()">Iniciativas</a></p>
+        <p class="menu_item"><a routerLink="/organizaciones" (click)="closeMenu()">Organizaciones</a></p>
+        <p class="menu_item"><a routerLink="/glosario" (click)="closeMenu()">Glosario</a></p>
+        <p class="menu_item"><a routerLink="/noticias" (click)="closeMenu()">Noticias</a></p>
+        <p class="menu_item"><a routerLink="/eventos" (click)="closeMenu()">Eventos</a></p>
+        <p class="menu_item"><a routerLink="/editoriales" (click)="closeMenu()">Editoriales</a></p>
+        <p class="menu_item"><a routerLink="/colaboraciones" (click)="closeMenu()">Colaboraciones</a></p>
+        <p class="menu_item"><a routerLink="/marco-legal" (click)="closeMenu()">Marco legal</a></p>
+        <p class="menu_item"><a routerLink="/bibliografia" (click)="closeMenu()">Bibliografía</a></p>
+        <p class="menu_item"><a routerLink="/faq" (click)="closeMenu()">FAQ</a></p>
+        <p class="menu_item"><a routerLink="/contactenos" (click)="closeMenu()">Contáctenos</a></p>
+      </div>
+      <div id="menu_close" class="text-primary texto-centrado menu_elements" [class.hide]="!menuOpen" (click)="closeMenu()">X</div>
+      <div id="menu_icon" [class.hide]="menuOpen" (click)="toggleMenu()">
+        <div class="menu_icon_line"></div>
+        <div class="menu_icon_line"></div>
+        <div class="menu_icon_line"></div>
+      </div>
+    </div>
+
+    <div id="content">
+      <router-outlet />
+    </div>
+
+    <div id="footer">
+      <div>
+        <a routerLink="/">
+          <div id="logo_footer"></div>
+        </a>
+        <a href="https://www.instagram.com/fanjcuba/" target="_blank">
+          <div id="logo_fanj"></div>
+        </a>
+        <a href="https://www.nature.org" target="_blank">
+          <div id="logo_nature_conservancy"></div>
+        </a>
+      </div>
+      <div>
+        <div id="correo_footer">
+          <a routerLink="/contactenos">Escríbanos</a>
+        </div>
+        <div id="telefono_footer">{{ configuracion?.telefono }}</div>
+        <a [href]="configuracion?.facebook" target="_blank"><div id="facebook_footer"></div></a>
+        <a [href]="configuracion?.twitter" target="_blank"><div id="twitter_footer"></div></a>
+        <a [href]="configuracion?.instagram" target="_blank"><div id="instagram_footer"></div></a>
+      </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+      <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+  </div>

@@ -1,0 +1,41 @@
+<app-back-button text="Noticias" />
+
+<div class="title">Noticias</div>
+
+@if (items.length === 0) {
+  <div class="alert alert-front">
+    <strong><i class="fas fa-info-circle bigger-150"></i> No hay noticias</strong>
+  </div>
+}
+<div class="row">
+  @for (entity of items; track entity.id) {
+    <div class="col-xs-12 col-sm-6">
+      <div class="row">
+        <p class="noticia_fecha">{{ entity.fecha | dateToStr }}</p>
+        <div class="col-xs-12">
+          <a class="action_edit" [routerLink]="['/noticias', entity.slug]">
+            <p class="noticia_titulo">{{ entity.titulo }}</p>
+          </a>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <p class="noticia_resumen">{{ entity.resumen }}</p>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          @if (entity.imagen) {
+            <div class="noticia_imagen">
+              <a class="action_edit" [routerLink]="['/noticias', entity.slug]">
+                <img width="100%" [src]="adjuntos.url(entity.imagen)" />
+              </a>
+            </div>
+          } @else if (entity.imagenUrl) {
+            <div class="noticia_imagen">
+              <a class="action_edit" [routerLink]="['/noticias', entity.slug]">
+                <img width="100%" [src]="entity.imagenUrl" />
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

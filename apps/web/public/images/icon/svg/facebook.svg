@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Facebook</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sprite" transform="translate(-860, -190)">
+            <g id="Facebook" transform="translate(860, 190)">
+                <circle id="Oval" cx="21" cy="21" r="21"></circle>
+                <path d="M26.7280987,9.00299798 L26.7280987,12.7998299 L24.627281,12.7998299 C24.627281,12.7998299 22.7280651,12.5294277 22.7280651,14.3598431 L22.7280651,17.3438682 L26.7280987,17.3438682 L26.2528947,21.4639029 L22.7280651,21.4639029 L22.7280651,33 L18.1184263,33 L18.1184263,21.4111024 L15,21.4111024 L15,17.3438682 L18.2544274,17.3438682 L18.2544274,13.8846391 C18.2544274,13.8846391 17.848024,11.9886231 19.5424382,10.42701 C21.2368525,8.86699684 23.4736713,9.00299798 23.4736713,9.00299798 L26.7280987,9.00299798 Z" id="Fill-1" fill="#3674A8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<app-back-button text="Noticias" />
+
+@if (item; as entity) {
+  <div class="row">
+    <div class="col-xs-12">
+      @if (imageUrl(entity); as url) {
+        <div class="noticia_imagen">
+          <img width="100%" [src]="url" />
+        </div>
+      }
+      <p class="noticia_fecha show">{{ entity.fecha | dateToStr }}</p>
+      <p class="noticia_titulo show">{{ entity.titulo }}</p>
+      <p class="noticia_resumen show">{{ entity.resumen }}</p>
+    </div>
+  </div>
+}

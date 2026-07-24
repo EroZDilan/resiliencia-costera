@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Twitter</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sprite" transform="translate(-929, -190)">
+            <g id="Twitter" transform="translate(929, 190)">
+                <circle id="Oval" cx="21" cy="21" r="21"></circle>
+                <path d="M7.0677284,8 L17.7929643,22.3405396 L7,34 L9.42906234,34 L18.8782842,23.7919696 L26.5129956,34 L34.779191,34 L23.4505062,18.8528328 L33.4965151,8 L31.0674528,8 L22.3651864,17.4014028 L15.3339239,8 L7.0677284,8 L7.0677284,8 Z M10.6398462,9.78923657 L14.4373553,9.78923657 L31.2065181,32.2104859 L27.409009,32.2104859 L10.6398462,9.78923657 Z" id="path1009" fill="#3674A8" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

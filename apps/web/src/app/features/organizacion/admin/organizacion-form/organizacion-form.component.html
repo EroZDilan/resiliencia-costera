@@ -1,0 +1,65 @@
+<p-toast />
+
+<h2>{{ id ? 'Editar organización' : 'Nueva organización' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <div class="field">
+    <label for="nombre">Nombre *</label>
+    <input pInputText id="nombre" formControlName="nombre" />
+  </div>
+
+  <div class="field">
+    <label for="descripcion">Descripción *</label>
+    <textarea pTextarea id="descripcion" formControlName="descripcion" rows="4"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Logo *</label>
+    @if (logoUrl) {
+      <img [src]="logoUrl" alt="" width="80" />
+    }
+    <p-fileUpload
+      mode="basic"
+      chooseLabel="Subir logo"
+      accept="image/*"
+      [customUpload]="true"
+      (uploadHandler)="uploadLogo($event)"
+      [auto]="true"
+    />
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input pInputText id="email" formControlName="email" />
+  </div>
+
+  <div class="field">
+    <label for="telefono">Teléfono</label>
+    <input pInputText id="telefono" formControlName="telefono" />
+  </div>
+
+  <div class="field">
+    <label for="web">Sitio web</label>
+    <input pInputText id="web" formControlName="web" />
+  </div>
+
+  <div class="field">
+    <label for="facebook">Facebook</label>
+    <input pInputText id="facebook" formControlName="facebook" />
+  </div>
+
+  <div class="field">
+    <label for="instagram">Instagram</label>
+    <input pInputText id="instagram" formControlName="instagram" />
+  </div>
+
+  <div class="field">
+    <label for="twitter">Twitter</label>
+    <input pInputText id="twitter" formControlName="twitter" />
+  </div>
+
+  <div class="actions">
+    <button pButton type="button" label="Cancelar" class="p-button-text" routerLink="/admin/organizaciones"></button>
+    <button pButton type="submit" label="Guardar" [loading]="saving"></button>
+  </div>
+</form>

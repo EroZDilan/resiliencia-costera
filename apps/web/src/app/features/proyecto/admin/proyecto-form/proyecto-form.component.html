@@ -1,0 +1,139 @@
+<p-toast />
+
+<h2>{{ id ? 'Editar proyecto' : 'Nuevo proyecto' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <div class="field">
+    <label for="nombreCorto">Nombre corto *</label>
+    <input pInputText id="nombreCorto" formControlName="nombreCorto" />
+  </div>
+
+  <div class="field">
+    <label for="nombreOficial">Nombre oficial *</label>
+    <textarea pTextarea id="nombreOficial" formControlName="nombreOficial" rows="2"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="areaIntervencion">Área de intervención</label>
+    <textarea pTextarea id="areaIntervencion" formControlName="areaIntervencion" rows="2"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="estado">Estado *</label>
+    <p-select id="estado" formControlName="estado" [options]="estados" optionLabel="label" optionValue="value" />
+  </div>
+
+  <div class="field">
+    <label for="fechaInicio">Fecha de inicio *</label>
+    <p-datePicker id="fechaInicio" formControlName="fechaInicio" dateFormat="dd/mm/yy" />
+  </div>
+
+  <div class="field">
+    <label for="web">Sitio web *</label>
+    <input pInputText id="web" formControlName="web" />
+  </div>
+
+  <div class="field">
+    <label>Logo *</label>
+    @if (logoUrl) {
+      <img [src]="logoUrl" alt="" width="80" />
+    }
+    <p-fileUpload
+      mode="basic"
+      chooseLabel="Subir logo"
+      accept="image/*"
+      [customUpload]="true"
+      (uploadHandler)="uploadLogo($event)"
+      [auto]="true"
+    />
+  </div>
+
+  <div class="field">
+    <label for="email">Email (email o teléfono es obligatorio)</label>
+    <input pInputText id="email" formControlName="email" />
+  </div>
+
+  <div class="field">
+    <label for="telefono">Teléfono</label>
+    <input pInputText id="telefono" formControlName="telefono" />
+  </div>
+
+  <div class="field">
+    <label for="facebook">Facebook</label>
+    <input pInputText id="facebook" formControlName="facebook" />
+  </div>
+
+  <div class="field">
+    <label for="instagram">Instagram</label>
+    <input pInputText id="instagram" formControlName="instagram" />
+  </div>
+
+  <div class="field">
+    <label for="twitter">Twitter</label>
+    <input pInputText id="twitter" formControlName="twitter" />
+  </div>
+
+  <div class="field">
+    <label for="organizacionesLideresIds">Organizaciones líderes</label>
+    <p-multiSelect id="organizacionesLideresIds" formControlName="organizacionesLideresIds"
+                   [options]="organizaciones" optionLabel="nombre" optionValue="id" display="chip" />
+  </div>
+
+  <div class="field">
+    <label for="otrosLideres">Otros líderes (texto libre)</label>
+    <input pInputText id="otrosLideres" formControlName="otrosLideres" />
+  </div>
+
+  <div class="field">
+    <label for="organizacionesParticipantesIds">Organizaciones participantes</label>
+    <p-multiSelect id="organizacionesParticipantesIds" formControlName="organizacionesParticipantesIds"
+                   [options]="organizaciones" optionLabel="nombre" optionValue="id" display="chip" />
+  </div>
+
+  <div class="field">
+    <label for="otrosParticipantes">Otros participantes (texto libre)</label>
+    <input pInputText id="otrosParticipantes" formControlName="otrosParticipantes" />
+  </div>
+
+  <div class="field">
+    <label for="resultado">Resultado</label>
+    <textarea pTextarea id="resultado" formControlName="resultado" rows="3"></textarea>
+  </div>
+
+  <div class="actions">
+    <button pButton type="button" label="Cancelar" class="p-button-text" routerLink="/admin/proyectos"></button>
+    <button pButton type="submit" label="Guardar" [loading]="saving"></button>
+  </div>
+</form>
+
+@if (id) {
+  <section class="lugares">
+    <h3>Lugares (ubicaciones en el mapa)</h3>
+
+    <p-table [value]="lugares" dataKey="id">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Coordenadas (lat,lng)</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-lugar>
+        <tr>
+          <td>{{ lugar.nombre }}</td>
+          <td>{{ lugar.geometria }}</td>
+          <td>
+            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="removeLugar(lugar)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <form [formGroup]="lugarForm" (ngSubmit)="addLugar()" class="lugar-form">
+      <input pInputText placeholder="Nombre del lugar" formControlName="nombre" />
+      <input pInputText type="number" placeholder="Latitud" formControlName="lat" />
+      <input pInputText type="number" placeholder="Longitud" formControlName="lng" />
+      <button pButton type="submit" label="Agregar lugar" icon="pi pi-plus"></button>
+    </form>
+  </section>
+}
