@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd apps/api && npm run build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" }
-  ]
-}

@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
+// TypeORM resolves DB drivers via a dynamic require(driverName), which static
+// bundlers (Vercel's included) can't follow from that string alone. This
+// forces mysql2 into the traced dependency graph so it's present at runtime.
+import 'mysql2';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NoopAuthGuard } from './common/auth/noop-auth.guard';
