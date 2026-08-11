@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build --workspace=apps/api",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ]
+}

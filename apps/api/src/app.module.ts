@@ -34,6 +34,8 @@ import { FaqModule } from './modules/faq/faq.module';
         username: config.get('DB_USERNAME'),
         password: config.get('DB_PASSWORD'),
         database: config.get('DB_DATABASE'),
+        // TiDB Serverless (and most managed MySQL) require TLS on their public endpoint.
+        ssl: config.get('DB_SSL') === 'true' ? { minVersion: 'TLSv1.2' } : undefined,
         autoLoadEntities: true,
         // Never true: this schema is shared with the live PHP app and with
         // the resiliencia-mysql container used by both stacks in parallel.
